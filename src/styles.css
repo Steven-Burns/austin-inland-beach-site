@@ -6,7 +6,7 @@
 html, body {
   margin: 0;
   border: 0;
-  padding: 00;
+  padding: 0;
 }
 
 main {
@@ -16,7 +16,7 @@ main {
 main > h1 {
   margin: auto;
   text-align: center;
-  font-size: 500%;
+  font-size: xx-large;
   font-family: 'Nunito', sans-serif;
   color:#FFF;
 }
