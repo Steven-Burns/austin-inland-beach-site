@@ -7,16 +7,23 @@ html, body {
   margin: 0;
   border: 0;
   padding: 0;
-  background-color: #02B1E8;
 }
 
 main {
   margin: auto;
   width: 50%;
   padding: 20px;
+  background-color: #02B1E8;
 }
 
 main > h1 {
+  text-align: center;
+  font-size: xxx-large;
+  font-family: 'Nunito', sans-serif;
+  color:#FFF;
+}
+
+.body-text {
   text-align: center;
   font-size: xxx-large;
   font-family: 'Nunito', sans-serif;
