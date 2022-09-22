@@ -1,0 +1,7 @@
+"ns1-32.azure-dns.com."
+"ns2-32.azure-dns.net."
+"ns3-32.azure-dns.org."
+"ns4-32.azure-dns.info."
+
+https://yellow-stone-0e6cfac10.1.azurestaticapps.net
+
