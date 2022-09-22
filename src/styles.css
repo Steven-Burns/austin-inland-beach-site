@@ -7,16 +7,17 @@ html, body {
   margin: 0;
   border: 0;
   padding: 0;
+  width: 100%;
+  min-width:500px;
 }
 
 main {
-  width: 100%;
 }
 
 main > h1 {
   margin: auto;
   text-align: center;
-  font-size: xx-large;
+  font-size: xxx-large;
   font-family: 'Nunito', sans-serif;
   color:#FFF;
 }
@@ -31,11 +32,10 @@ main > h1 {
   box-shadow: 5px 5px 5px #444;
   padding: 12px 12px;
   text-align: center;
-
 }
 
 .button-img {
-  width: 70%;
+  width: 80%
 }
 
 .body-intro-text {
@@ -60,21 +60,7 @@ main > h1 {
 }
 
 .body-section-div {
-  margin: 25px 25%;
-  align-items: center;
-  align-content: center;
-  align-self: center;
-  text-align: center;
-
-}
-
-.button-div {
-  border: 2px solid #333;
-  border-radius: 10px;
-  box-shadow: 5px 5px 5px #444;
-  padding: 12px 12px;
-  text-align: center;
-  
+  margin: 25px 10%;
 }
 
 .MsoNormal {
