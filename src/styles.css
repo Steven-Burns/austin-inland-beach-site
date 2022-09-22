@@ -6,12 +6,11 @@
 html, body {
   margin: 0;
   border: 0;
-  padding: 0;
+  padding: 00;
 }
 
 main {
   width: 100%;
-  background-color: #02B1E8;
 }
 
 main > h1 {
@@ -20,6 +19,23 @@ main > h1 {
   font-size: 500%;
   font-family: 'Nunito', sans-serif;
   color:#FFF;
+}
+
+.button-link-img {
+  display:block;
+  background: #69c;
+  color: #fff;
+  padding: 20px 20px;
+  border: 2px solid #333;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px #444;
+  padding: 12px 12px;
+  text-align: center;
+
+}
+
+.button-img {
+  width: 70%;
 }
 
 .body-intro-text {
@@ -40,17 +56,29 @@ main > h1 {
   text-align: center;
   font-size: smaller;
   font-family: 'Nunito', sans-serif;
+  color:#FFF;
 }
 
 .body-section-div {
-  margin: 0 25%;
+  margin: 25px 25%;
+  align-items: center;
+  align-content: center;
+  align-self: center;
+  text-align: center;
+
 }
 
-.button-div
-{
+.button-div {
   border: 2px solid #333;
   border-radius: 10px;
   box-shadow: 5px 5px 5px #444;
   padding: 12px 12px;
   text-align: center;
+  
+}
+
+.MsoNormal {
+	line-height:100%;
+	font-size: 24pt;
+	font-family: "Nunito", sans-serif;
 }
