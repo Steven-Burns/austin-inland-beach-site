@@ -1,5 +1,5 @@
 * {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Nunito', Arial, Helvetica, sans-serif;
 }
 
 
@@ -64,4 +64,9 @@ h4 {
 .body-section-div {
   text-align: center; 
   margin: 25px 5%;
+}
+
+.blue-background-img {
+  background-color: darkblue;
+  padding: 2px;
 }
