@@ -8,6 +8,7 @@ html, body {
   border: 0;
   padding: 0;
   min-width:500px;
+  max-width:800px;
 }
 
 main {
@@ -33,19 +34,19 @@ h4 {
   font-family: 'Nunito', sans-serif;
 }
 
-.button-link-img {
+.button-link-img-a {
   display:block;
   background: #69c;
-  padding: 20px 20px;
   border: 2px solid #333;
   border-radius: 10px;
   box-shadow: 5px 5px 5px #444;
-  padding: 12px 12px;
+  padding: 8px 8px;
   text-align: center;
 }
 
 .button-img {
-  width: 80%
+  width: 70%;
+  height: 4em
 }
 
 .body-intro-text {
