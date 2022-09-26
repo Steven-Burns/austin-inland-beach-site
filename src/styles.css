@@ -17,11 +17,14 @@ h1 {
   text-align: center;
   font-size: xxx-large;
   font-family: 'Nunito', sans-serif;
+  text-shadow: 0 0 5px darkblue;
+  color: yellow
 }
 
 h2 {
   font-size: xx-large;
   font-family: 'Nunito', sans-serif;
+  text-shadow: 0 0 3px darkblue;
 }
 
 h4 {
@@ -69,4 +72,8 @@ h4 {
 .blue-background-img {
   background-color: darkblue;
   padding: 2px;
+}
+
+.icon-img {
+  width: 2.5em;
 }
