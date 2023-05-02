@@ -59,6 +59,11 @@ h4 {
   font-family: 'Nunito', sans-serif;
 }
 
+.body-small-text {
+  font-size: large;
+  font-family: 'Nunito', sans-serif;
+}
+
 .body-footnote-text {
   text-align: center;
   font-size: smaller;
