@@ -39,8 +39,9 @@ h3 {
   border: 2px solid #333;
   border-radius: 10px;
   box-shadow: 5px 5px 5px #444;
-  padding: 8px 8px;
+  padding: 1em;
   text-align: center;
+  text-decoration: none;
 }
 
 .button-img {
