@@ -11,9 +11,6 @@ html, body {
   max-width:800px;
 }
 
-main {
-}
-
 h1 {
   text-align: center;
   font-size: xxx-large;
@@ -25,7 +22,7 @@ h1 {
 h2 {
   font-size: xx-large;
   font-family: 'Nunito', sans-serif;
-  text-shadow: 0 0 3px darkblue;
+  /* text-shadow: 0 0 3px darkblue; */
 }
 
 h3 {
