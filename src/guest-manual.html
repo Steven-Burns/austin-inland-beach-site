@@ -16,12 +16,53 @@
     <link rel="icon" href="images/beach-icon.svg" sizes="any" />
 
     <title>Austin's Inland Beach Pool and Event Space: Guest Guide</title>
+
+    <script>
+        // Generates a table of contents inside a div with id="toc" from all the heading tags inside another div with id="contents"
+        window.onload = function () {
+            var toc = "";
+            var level = 0;
+
+            document.getElementById("contents").innerHTML =
+                document.getElementById("contents").innerHTML.replace(
+                    /<h([\d])>([^<]+)<\/h([\d])>/gi,
+                    function (str, openLevel, titleText, closeLevel) {
+                        if (openLevel != closeLevel) {
+                            return str;
+                        }
+
+                        if (openLevel > level) {
+                            toc += (new Array(openLevel - level + 1)).join("<ul>");
+                        } else if (openLevel < level) {
+                            toc += (new Array(level - openLevel + 1)).join("</ul>");
+                        }
+
+                        level = parseInt(openLevel);
+
+                        var anchor = titleText.replace(/ /g, "_");
+                        toc += "<li><a href=\"#" + anchor + "\"><p class=\"body-text\" \">" + titleText
+                            + "</p></a></li>";
+
+                        return "<h" + openLevel + "><a name=\"" + anchor + "\">"
+                            + titleText + "</a></h" + closeLevel + ">";
+                    }
+                );
+
+            if (level) {
+                toc += (new Array(level + 1)).join("</ul>");
+            }
+
+            document.getElementById("toc").innerHTML += toc;
+        };
+
+    </script>
 </head>
 
 <body>
     <main style="
         padding: 20px;">
-        <h1>Welcome to Austin's Inland Beach Pool and Event Space!</h1>
+
+        <h1>Austin's Inland Beach Guest Guide</h1>
 
         <p class="body-text">
             Thank you for booking our <a href="https://swimply.com/pooldetails/14726">pool and event space</a>! We are
@@ -33,313 +74,242 @@
             to see to any needs. We are always open to feedback on your experience.</p>
         <p class="body-text">Below are some instructions to make your visit a breeze.</p>
 
-        <h2>Waivers</h2>
-
-        <p class="body-text">Each participant *must* supply a signed waiver on arrival. <b>This includes even those that
-                do
-                not enter the water</b>. Paper copies are available. You can download the waiver and bring a copy signed
-            in advance. A parent or legal guardian must sign for every minor.
-            Each family may have an adult parent or guardian sign a single waiver to cover the entire family.
-        </p>
-        <p class="body-text"><b>If you are throwing a party with children being dropped off, it is YOUR responsibility
-                to see that each child has a waiver signed by their parent / guardian.</b></p>
-
-        <a class="button-link-img-a" href="liability-waiver.docx" style="width:fit-content">
-            <p class="body-text">Download Waiver</p>
-        </a>
-
-        <h2>Rules </h2>
-
-        <ul type=disc>
-            <li class="body-text">No smoking anything, anywhere on the property.</li>
-            <li class="body-text">No headfirst diving. The water is not deep enough for diving.</li>
-            <li class="body-text">No glass on or near the pool deck or in the water.</li>
-            <li class="body-text">No food or drinks in the pool or hot tub.</li>
-            <li class="body-text">No climbing on or jumping from furniture.</li>
-            <li class="body-text">Please play music at a respectful volume level.</li>
-            <li class="body-text">No objects in the water except host-approved pool toys (ex: no rocks,
-                sticks, alligators, etc.).</li>
-            <li class="body-text">No confetti, party streamers, wedding rice, etc. Such things blow into
-                the pool and clog the filters.</li>
-            <li class="body-text">No dumping anything but water into patio drain.</li>
-            <li class="body-text">No pets or non-humans.</li>
-        </ul>
-
-        <p class="body-text" style="font-weight:bold;color:#00B0F0"><a href="contact.html">Contact the
-                Hosts</a> with any questions or issues.
-        </p>
-
-        <h2>Parking</h2>
-
-        <p class="body-text">Park in either driveway: the semicircular driveway on
-            the north or the side driveway on the east. You may also park on the street, but please prefer the
-            driveways. The east driveway is the most convenient to the gate.</p>
-
-        <h2>Entrance</h2>
-
-        <p class="body-text">Enter through the east gate. There is a blue Welcome sign on the gate. A host will greet
-            you at the start of your booking.</p>
-
-        <h2>Safety</h2>
-
-        <p class="body-text">Obey all pool rules. The rules are for your safety.</p>
-        <!--
-        <p class="body-text">A lifesaver ring buoy is on the wall under the bar counter.</p>
--->
-        <p class="body-text">Reaching poles are on the back of the wall by the pool pumps.</p>
-
-        <p class="body-text">We urge you to please designate one or more Water Watchers to act as
-            lifeguards. Monitor children at all times. Hand off designation of Water Watcher between adults as needed.
-            Water Watcher wristbands are available on the bar countertop</p>
-
-        <p class="body-text">From <a href="https://www.safekids.org/poolsafety">safekids.org</a>:</p>
-
-        <div style="padding:0px 20px 0px">
-            <p>"When children are swimming and there are several adults present, make sure kids are actively supervised
-                at all times by choosing a Water Watcher. A Water Watcher is a responsible adult who agrees to watch the
-                kids in the water without distractions and wear a Water Watcher card. After a certain amount of time
-                (such as 15-minutes), the Water Watcher card is passed to another adult, who is responsible for the
-                active supervision."</p>
+        <div id="toc">
+            <h2>Index</h2>
         </div>
 
-        <p class="body-text">A First Aid kit is on the bar countertop.</p>
+        <div id="contents">
+            <h2>Waivers</h2>
+
+            <p class="body-text">Each participant *must* supply a signed waiver on arrival. <b>This includes even those
+                    that
+                    do
+                    not enter the water</b>. Paper copies are available. You can download the waiver and bring a copy
+                signed
+                in advance. A parent or legal guardian must sign for every minor.
+                Each family may have an adult parent or guardian sign a single waiver to cover the entire family.
+            </p>
+            <p class="body-text"><b>If you are throwing a party with children being dropped off, it is YOUR
+                    responsibility
+                    to see that each child has a waiver signed by their parent / guardian.</b></p>
+
+            <a class="button-link-img-a" href="liability-waiver.docx" style="width:fit-content">
+                <p class="body-text">Download Waiver</p>
+            </a>
+
+            <h2>Rules </h2>
+
+            <ul type=disc>
+                <li class="body-text">No smoking anything, anywhere on the property.</li>
+                <li class="body-text">No headfirst diving. The water is not deep enough for diving.</li>
+                <li class="body-text">No glass on or near the pool deck or in the water.</li>
+                <li class="body-text">No food or drinks in the pool or hot tub.</li>
+                <li class="body-text">No climbing on or jumping from furniture.</li>
+                <li class="body-text">Please play music at a respectful volume level.</li>
+                <li class="body-text">No objects in the water except host-approved pool toys (ex: no rocks,
+                    sticks, alligators, etc.).</li>
+                <li class="body-text">No confetti, party streamers, wedding rice, etc. Such things blow into
+                    the pool and clog the filters.</li>
+                <li class="body-text">No dumping anything but water into patio drain.</li>
+                <li class="body-text">No pets or non-humans.</li>
+            </ul>
+
+            <p class="body-text" style="font-weight:bold;color:#00B0F0"><a href="contact.html">Contact the
+                    Hosts</a> with any questions or issues.
+            </p>
+
+            <h2>Parking</h2>
+
+            <p class="body-text">Park in either driveway: the semicircular driveway on
+                the north or the side driveway on the east. You may also park on the street, but please prefer the
+                driveways. The east driveway is the most convenient to the gate.</p>
+
+            <h2>Entrance</h2>
+
+            <p class="body-text">Enter through the east gate. There is a blue Welcome sign on the gate. A host will
+                greet
+                you at the start of your booking.</p>
+            <img class="blue-background-img" src="images/photos/entrance1.jpg" height="450" />
+            <img class="blue-background-img" src="images/photos/entrance2.jpg" height="450" />
+
+            <h2>Safety</h2>
+
+            <p class="body-text">Obey all pool rules. The rules are for your safety.</p>
+            <!--
+        <p class="body-text">A lifesaver ring buoy is on the wall under the bar counter.</p>
+-->
+            <p class="body-text">Reaching poles are on the back of the wall by the pool pumps.</p>
+
+            <p class="body-text">We urge you to please designate one or more Water Watchers to act as
+                lifeguards. Monitor children at all times. Hand off designation of Water Watcher between adults as
+                needed.
+                Water Watcher wristbands are available on the bar countertop</p>
+
+            <p class="body-text">From <a href="https://www.safekids.org/poolsafety">safekids.org</a>:</p>
+
+            <div style="padding:0px 20px 0px">
+                <p>"When children are swimming and there are several adults present, make sure kids are actively
+                    supervised
+                    at all times by choosing a Water Watcher. A Water Watcher is a responsible adult who agrees to watch
+                    the
+                    kids in the water without distractions and wear a Water Watcher card. After a certain amount of time
+                    (such as 15-minutes), the Water Watcher card is passed to another adult, who is responsible for the
+                    active supervision."</p>
+            </div>
+
+            <p class="body-text">A First Aid kit is on the bar countertop.</p>
+
+            <p class="body-text">The hosts are CPR trained. However, they are NOT
+                monitoring your activity. If you need to reach them in an emergency, knock and
+                call into the house loudly <b>after calling 911</b>.</p>
+
+            <p class="body-text">Please remove
+                all water toys from the pool at the conclusion
+                of your swim. Toys in the pool tempt little ones to jump back into the water
+                unobserved.</p>
+
+            <p class="body-text">Water
+                toys are NOT a substitute for life preservers/vests
+                for non-swimmers. Life preservers are not provided.</p>
+
+            <p class="body-text">Hard surfaces can get hot in the sun and slippery when wet. Sandals are recommended.
+            </p>
+
+            <h2>Additional Guests</h2>
+
+            <p class="body-text">All guests of any age must be registered as attendees
+                in the booking, no matter what activities they may participate in and <b>even if they do not
+                    enter the pool</b>.
+                This is a requirement of the liability coverage.</p>
+            <p class="body-text">You can add guests during your booking with the booking app.</p>
 
-        <p class="body-text">The hosts are CPR trained. However, they are NOT
-            monitoring your activity. If you need to reach them in an emergency, knock and
-            call into the house loudly <b>after calling 911</b>.</p>
+            <h2>Additional Time</h2>
 
-        <p class="body-text">Please remove
-            all water toys from the pool at the conclusion
-            of your swim. Toys in the pool tempt little ones to jump back into the water
-            unobserved.</p>
+            <p class="body-text">Want to add more time to your booking? Talk to a host. We usually can accomodate
+                extensions
+                if there is no conflicting booking after you.</p>
+
+            <h2>Bathroom</h2>
 
-        <p class="body-text">Water
-            toys are NOT a substitute for life preservers/vests
-            for non-swimmers. Life preservers are not provided.</p>
-
-        <p class="body-text">Hard surfaces can get hot in the sun and slippery when wet. Sandals are recommended.</p>
-
-        <h2>Additional Guests</h2>
-
-        <p class="body-text">All guests of any age must be registered as attendees
-            in the booking, no matter what activities they may participate in and <b>even if they do not
-                enter the pool</b>.
-            This is a requirement of the liability coverage.</p>
-        <p class="body-text">You can add guests during your booking with the booking app.</p>
-
-        <h2>Additional Time</h2>
-
-        <p class="body-text">Want to add more time to your booking? Talk to a host. We usually can accomodate extensions
-            if there is no conflicting booking after you.</p>
-
-        <h2>Bathroom</h2>
-
-        <p class="body-text">Enter the house through the door that is left of the
-            east fireplace, at the outdoor kitchen area. Follow the WC signs.</p>
-        <img class="blue-background-img" src="images/restroom-sign.svg" height="100" />
-
-        <h2>Infants / Toddlers</h2>
-
-        <p class="body-text">Please use swim diapers for children that are not yet
-            toilet trained. Do not dispose of diapers of any sort in the toilet.</p>
-        <p class="body-text">We keep a small supply of swim diapers should you run out.</p>
-
-        <h2>Fireplaces</h2>
-
-        <p class="body-text">Add the Fireplaces amenity to your booking to use either or both of the
-            patio fireplaces. Fireplaces are wood-burning. Firewood is provided.
-            Use of hot dog / marshmallow cookers and a "hobo pie iron" is included.</p>
-
-        <h2>No Glass</h2>
-
-        <p class="body-text">Please do not use glass items (mugs, glass bottles, glass containers, etc.) anywhere around
-            the pool deck or in the pool or hot tub. Decant beverages into metal or plastic containers. </p>
-            
-        <p class="body-text">
-            Broken glass is nearly invisible when wet, and very dangerous.</p>
-
-        <p class="body-text">If you break
-            a glass item near the pool deck, we must assume that some glass entered the water, and you will be charged
-            $500 to cover the cost of draining, cleaning, and refilling the pool.</p>
-
-        <h2>Grill / Outdoor Kitchen</h2>
-
-        <p class="body-text">Add the Grill / Outdoor Kitchen Amenity to
-            your booking and you have access to the grill, stock pot burner, east fireplace,
-            icemaker, beverage refrigerator, sink, dining table, and toaster oven.</p>
-
-        <h3>Grill</h3>
-
-        <p class="body-text">The propane grill has 4 burners and a smoker. Cooking utensils are provided.</p>
-
-        <p class="body-text">The
-            grill can be rigged on request with heavy steel
-            baking plates covering all or half of the cooking surface. The plates work well
-            for baking or warming pizza, bread, tortillas, pupusas, etc.</p>
-
-        <h3>Toaster Oven</h3>
-
-        <p class="body-text">Fresh baked cookies or brownies by the pool? Yes
-            please! Let the host know if you want to use the oven so that we can have it ready for you.</p>
-
-        <h3>Ceiling fans</h3>
-
-        <p class="body-text">The fans
-            are controlled with the circular pads on the
-            east wall of the kitchen. Slide the switch to the on position. Set the speed
-            with the 1-, 2-, or 3-dot buttons on the circular pads.</p>
-
-        <img class="blue-background-img" src="images/fan-controls.jpg" height="200" />
-
-        <h2>WiFi</h2>
-
-        <p class="body-text">Connect
-            to the &quot;Austin Inland Beach Guest&quot; wireless network. No password needed.</p>
-
-        <h2>Speaker</h2>
-
-        <p class="body-text">A
-            portable speaker with radio and phone input is
-            provided as a free amenity. You will need to bring your own dongle appropriate
-            for your phone to connect to the speaker.</p>
-
-        <p class="body-text">Feel
-            free to relocate the speaker as desired. Feel
-            free to ask the host for assistance. </p>
-
-        <p class="body-text">Please
-            keep the volume at a respectful level.</p>
-
-        <h2>Seating</h2>
-
-        <p class="body-text">Here is the provided seating:</p>
-        <ul type=disc>
-            <li class="body-text">10 bar stools</li>
-            <li class="body-text">4 chaise loungers</li>
-            <li class="body-text">6 dining table chairs</li>
-            <li class="body-text">2 pool ledge Adirondack-style chairs</li>
-            <li class="body-text">3 love seats</li>
-            <li class="body-text">1 3-person couch</li>
-            <li class="body-text">2 accent chairs</li>
-            <li class="body-text">6 arrow-back dining chairs (please notify host pre-event if you want these)</li>
-            <li class="body-text">3 folding camp chairs (please notify host pre-event if you want these)</li>
-        </ul>
-        <p class="body-text">Total number of adult-sized backsides that can be accommodated: 42</p>
-        <p class="body-text">In addition, there are 2 fireplace hearths and the spa surround that can be used as
-            seating.</p>
-
-        </p>
-        <p class="body-text">Feel free to re-arrange the seating in any fashion that suits you. The hosts will take care
-            of putting things back after your event.</p>
-
-        <h2>Towels</h2>
-
-        <p class="body-text">Add the Towel Amenity and 5 clean, fluffy, beach towels will
-            be provided. Please leave used towels on the bar stools at the end of your
-            visit.</p>
-
-        <h2>Umbrellas</h2>
-
-        <p class="body-text">Umbrellas will be set up by the hosts before you
-            arrive. If they are not set up, then the breeze is too strong to safely leave
-            them unfurled. Please do not open them yourself: they can be tricky in the
-            wind.</p>
-
-        <h2>Toys</h2>
-
-        <p class="body-text">Use of
-            the floats, beach balls, and other toys provided
-            is included. If you have toys of your own, please discuss with the host before
-            putting them in the pool.</p>
-
-        <h2>Movie/Video projector</h2>
-
-        <p class="body-text">Add the movie projector amenity and the hosts will set up the outdoor theater for you.
-            Use of the host's Netflix, Apple TV+, Amazon Video, and Paramount+ subscriptions is included.</p>
-        <p class="body-text">Please keep the volume at a respectful level.</p>
-
-        <h2>Canopies</h2>
-
-        <p class="body-text">Add the 10x10 canopy amenity to your booking. This entitles you to up to three 10x10 canopies to be placed where you want.
-            The canopies are easy to relocate: just ask the host. A canopy happens to fit perfectly over the hot tub.</p>
-
-        <h2>Misting Fan</h2>
-
-        <p class="body-text">After adding the Misting Fan amenity, please
-            indicate to the host where you would like the fan set up (on the west patio,
-            outdoor kitchen area, near the chaise loungers, etc.). The fan speed is
-            adjusted with the knob on the side of the unit.</p>
-
-        <h2>Fitness Classes</h2>
-
-        <p class="body-text">After adding the private fitness class amenity to your booking, please discuss
-            with the host what kind of class you would like: when during your booking you would like the class to be
-            taught, the format, and the intensity level.</p>
-
-        <p class="body-text">Linda is a certified yoga, pilates, Zumba, aqua aerobics, HIIT body conditioning, and senior
-            fitness instructor. Try some water Zumba!
-        </p>
-        <p class="body-text">Exercise mats are NOT provided for hygiene reasons. Feel free to use the spigot and hose to
-            rinse your mats.</p>
-
-        <h2>Forget Something?</h2>
-
-        <p class="body-text">Complimentary sunscreen, sunburn gel, and band-aids are available in
-            a basket at the outdoor kitchen area.</p>
-        <p class="body-text"><a href="https://goo.gl/maps/hYSPqMT1DX6PSUMN6">Randall's</a> full-service grocery is about
-            3 miles away.
-            Ice, drinks, food, swim diapers, etc. are available there.</p>
-
-        <h2>Special Arrangements</h2>
-
-        <p class="body-text">If
-            you are interested in such things as a bouncy house,
-            wedding pavilion, your own yard games or activities, a ferris wheel, pony rides, or anything else that
-            strikes your fancy, please discuss with the host at booking time prior to your
-            arrival. Surprise additions upon arrival may not be approved.</p>
-
-        <h2>Promotions</h2>
-
-        <p class="body-text">See the current promotions
-            <a href="promotions.html">here</a>
-        </p>
-
-        <h2>Charitable Causes</h2>
-
-        <p class="body-text">We are a not-for-profit endeavor: a minimum of 10% of gross proceeds of all bookings are
-            donated to charity.</p>
-        <p class="body-text"><a href="charities.html">Learn more</a></p>
-        <p></p>
-
-        <h2>How We Clean</h2>
-
-        <p class="body-text">The pool is strictly maintained to have pH-neutral, clean,
-            clear, algae-free water. A salt water chlorination generator is used to continually
-            produce chlorine in low (1-4 ppm) concentrations: sufficient to kill all microbial
-            contaminants, but not produce eye or skin irritation.
-        </p>
-        <p class="body-text">On the day of your arrival, the pool will have been professionally
-            tested and balanced.</p>
-
-        <p class="body-text">(A pool that smells heavily of chlorine is NOT clean: strong chlorine
-            odor is an indicator of improper chemical balancing and signals the presence of sweat,
-            oils, fecal material, and urine in the water. Eeew. <a
-                href="https://www.cdc.gov/healthywater/swimming/aquatics-professionals/chloramines.html">Read more from
-                the CDC on chloramines</a>.) </p>
-
-        <p class="body-text">Upholstery, chaises, and chairs are wiped down prior to your
-            arrival with OxyClean disinfectant. All countertops and cooking surfaces are
-            cleaned with appropriate clensers and are disinfected.</p>
-
-
-        <p class="body-text" style="font-weight:bold;color:#00B0F0">Questions? <a href="contact.html">Contact the
-                Hosts</a>
-        </p>
-
+            <p class="body-text">Enter the house through the door that is left of the
+                east fireplace, at the outdoor kitchen area. Follow the WC signs.</p>
+            <img class="blue-background-img" src="images/restroom-sign.svg" height="100" />
+
+            <h2>Amenities</h2>
+
+            <p class="body-text">See the <a href="amenities.html">Amenities</a> page for instructions for each.</p>
+
+            <h2>Infants / Toddlers</h2>
+
+            <p class="body-text">Please use swim diapers for children that are not yet
+                toilet trained. Do not dispose of diapers of any sort in the toilet.</p>
+            <p class="body-text">We keep a small emergency supply of swim diapers should you run out.</p>
+
+            <h2>No Glass</h2>
+
+            <p class="body-text">Please do not use glass items (mugs, glass bottles, glass containers, etc.) anywhere
+                around
+                the pool deck or in the pool or hot tub. Decant beverages into metal or plastic containers. </p>
+
+            <p class="body-text">
+                Broken glass is nearly invisible when wet, and very dangerous.</p>
+
+            <p class="body-text">If you break
+                a glass item near the pool deck, we must assume that some glass entered the water, and you will be
+                charged
+                $500 to cover the cost of draining, cleaning, and refilling the pool.</p>
+
+            <h2>Seating</h2>
+
+            <p class="body-text">Here is the provided seating:</p>
+            <ul type=disc>
+                <li class="body-text">10 bar stools</li>
+                <li class="body-text">4 chaise loungers</li>
+                <li class="body-text">6 dining table chairs</li>
+                <li class="body-text">2 pool ledge Adirondack-style chairs</li>
+                <li class="body-text">3 love seats</li>
+                <li class="body-text">1 3-person couch</li>
+                <li class="body-text">2 accent chairs</li>
+                <li class="body-text">6 arrow-back dining chairs (please notify host pre-event if you want these)</li>
+                <li class="body-text">3 folding camp chairs (please notify host pre-event if you want these)</li>
+            </ul>
+            <p class="body-text">Total number of adult-sized backsides that can be accommodated: 42</p>
+            <p class="body-text">In addition, there are 2 fireplace hearths and the spa surround that can be used as
+                seating.</p>
+
+            </p>
+            <p class="body-text">Feel free to re-arrange the seating in any fashion that suits you. The hosts will take
+                care
+                of putting things back after your event.</p>
+
+            <h2>Umbrellas</h2>
+
+            <p class="body-text">Umbrellas will be set up by the hosts before you
+                arrive. If they are not set up, then the breeze is too strong to safely leave
+                them unfurled. Please do not open them yourself: they can be tricky in the
+                wind.</p>
+
+            <h2>Forget Something?</h2>
+
+            <p class="body-text">Complimentary sunscreen, sunburn gel, and band-aids are available in
+                a basket at the outdoor kitchen area.</p>
+            <p class="body-text"><a href="https://goo.gl/maps/hYSPqMT1DX6PSUMN6">Randall's</a> full-service grocery is
+                about
+                3 miles away.
+                Ice, drinks, food, swim diapers, etc. are available there.</p>
+
+            <h2>Special Arrangements</h2>
+
+            <p class="body-text">If
+                you are interested in such things as a bouncy house,
+                wedding pavilion, your own yard games or activities, a ferris wheel, pony rides, or anything else that
+                strikes your fancy, please discuss with the host at booking time prior to your
+                arrival. Surprise additions upon arrival may not be approved.</p>
+
+            <h2>Promotions</h2>
+
+            <p class="body-text">See the current promotions
+                <a href="promotions.html">here</a>
+            </p>
+
+            <h2>Charitable Causes</h2>
+
+            <p class="body-text">We are a not-for-profit endeavor: a minimum of 10% of gross proceeds of all bookings
+                are
+                donated to charity.</p>
+            <p class="body-text"><a href="charities.html">Learn more</a></p>
+            <p></p>
+
+            <h2>How We Clean</h2>
+
+            <p class="body-text">The pool is strictly maintained to have pH-neutral, clean,
+                clear, algae-free water. A salt water chlorination generator is used to continually
+                produce chlorine in low (1-4 ppm) concentrations: sufficient to kill all microbial
+                contaminants, but not produce eye or skin irritation.
+            </p>
+            <p class="body-text">On the day of your arrival, the pool will have been professionally
+                tested and balanced.</p>
+
+            <p class="body-text">(A pool that smells heavily of chlorine is NOT clean: strong chlorine
+                odor is an indicator of improper chemical balancing and signals the presence of sweat,
+                oils, fecal material, and urine in the water. Eeew. <a
+                    href="https://www.cdc.gov/healthywater/swimming/aquatics-professionals/chloramines.html">Read more
+                    from
+                    the CDC on chloramines</a>.) </p>
+
+            <p class="body-text">Upholstery, chaises, and chairs are wiped down prior to your
+                arrival with OxyClean disinfectant. All countertops and cooking surfaces are
+                cleaned with appropriate clensers and are disinfected.</p>
+
+            <p class="body-text" style="font-weight:bold;color:#00B0F0">Questions? <a href="contact.html">Contact the
+                    Hosts</a>
+            </p>
+
+        </div>
         <div class="body-section-div">
             <p></p>
-            <p class="body-footnote-text">Revision 28 Aug 2023</p>
-            <p class="body-footnote-text">&copy; 2023</p>
+            <p class="body-footnote-text">Revision 9 Sep 2023</p>
+            <p class="body-footnote-text">&copy; 2023 Austin's Inland Beach</p>
             <p></p>
         </div>
 

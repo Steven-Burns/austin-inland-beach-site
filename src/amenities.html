@@ -16,6 +16,46 @@
     <link rel="icon" href="images/beach-icon.svg" sizes="any" />
 
     <title>Austin's Inland Beach Pool and Event Space: Amenities</title>
+
+    <script>
+        // Generates a table of contents inside a div with id="toc" from all the heading tags inside another div with id="contents"
+        window.onload = function () {
+            var toc = "";
+            var level = 0;
+
+            document.getElementById("contents").innerHTML =
+                document.getElementById("contents").innerHTML.replace(
+                    /<h([\d])>([^<]+)<\/h([\d])>/gi,
+                    function (str, openLevel, titleText, closeLevel) {
+                        if (openLevel != closeLevel) {
+                            return str;
+                        }
+
+                        if (openLevel > level) {
+                            toc += (new Array(openLevel - level + 1)).join("<ul>");
+                        } else if (openLevel < level) {
+                            toc += (new Array(level - openLevel + 1)).join("</ul>");
+                        }
+
+                        level = parseInt(openLevel);
+
+                        var anchor = titleText.replace(/ /g, "_");
+                        toc += "<li><a href=\"#" + anchor + "\"><p class=\"body-text\" \">" + titleText
+                            + "</p></a></li>";
+
+                        return "<h" + openLevel + "><a name=\"" + anchor + "\">"
+                            + titleText + "</a></h" + closeLevel + ">";
+                    }
+                );
+
+            if (level) {
+                toc += (new Array(level + 1)).join("</ul>");
+            }
+
+            document.getElementById("toc").innerHTML += toc;
+        };
+
+    </script>
 </head>
 
 <body>
@@ -26,18 +66,117 @@
                 Hosts</a>
         </p>
 
-        <h2>Coming soon.</h2>
-        <p class="body-text">In the meantime, consult the booking page.</p>
+
+        <div id="toc">
+            <h2>Index</h2>
+        </div>
+
+        <div id="contents">
+            <h2>Canopies</h2>
+
+            <p class="body-text">Add the 10x10 canopy amenity to your booking. This entitles you to up to three 10x10
+                canopies to be placed where you want.
+                The canopies are easy to relocate: just ask the host. A canopy happens to fit perfectly over the hot
+                tub.</p>
+
+            <h2>Fireplaces</h2>
+
+            <p class="body-text">Add the Fireplaces amenity to your booking to use either or both of the
+                patio fireplaces. Fireplaces are wood-burning. Firewood is provided.
+                Use of hot dog / marshmallow cookers and a "hobo pie iron" is included.</p>
+
+            <h2>Fitness Classes</h2>
+
+            <p class="body-text">After adding the private fitness class amenity to your booking, please discuss
+                with the host what kind of class you would like: when during your booking you would like the class to be
+                taught, the format, and the intensity level.</p>
+
+            <p class="body-text">Linda is a certified yoga, pilates, Zumba, aqua aerobics, HIIT body conditioning, and
+                senior
+                fitness instructor. Try some water Zumba!
+            </p>
+            <p class="body-text">Exercise mats are NOT provided for hygiene reasons. Feel free to use the spigot and
+                hose to
+                rinse your mats.</p>
+
+            <h2>Grill / Outdoor Kitchen</h2>
+
+            <p class="body-text">Add the Grill / Outdoor Kitchen Amenity to
+                your booking and you have access to the grill, stock pot burner, east fireplace,
+                beverage refrigerator, sink, dining table, and toaster oven.</p>
+
+            <h3>Ceiling fans</h3>
+
+            <p class="body-text">The fans
+                are controlled with the circular pads on the
+                east wall of the kitchen. Slide the switch to the on position. Set the speed
+                with the 1-, 2-, or 3-dot buttons on the circular pads.</p>
+
+            <img class="blue-background-img" src="images/fan-controls.jpg" height="200" />
+
+            <h3>Grill</h3>
+
+            <p class="body-text">The propane grill has 30 inches of grilling space and 18 inches of heavy steel baking plate.
+                 Cooking utensils, gloves, and paper towels are provided in the cabinets.</p>
+
+            <p class="body-text">The baking plate covering is NOT a griddle. It is for baking or warming pizza, bread, tortillas, pupusas, etc.</p>
+
+            <h3>Toaster Oven</h3>
+
+            <p class="body-text">Fresh baked cookies or brownies by the pool? Yes
+                please! Let the host know if you want to use the oven so that we can have it ready for you.</p>
+
+            <h2>Misting Fan</h2>
+
+            <p class="body-text">After adding the Misting Fan amenity, please
+                indicate to the host where you would like the fan set up (on the west patio,
+                outdoor kitchen area, near the chaise loungers, etc.). The fan speed is
+                adjusted with the knob on the side of the unit.</p>
+            <h2>Movie/Video projector</h2>
+
+            <p class="body-text">Add the movie projector amenity and the hosts will set up the outdoor theater for you.
+                Use of the host's Netflix, Apple TV+, Amazon Video, and Paramount+ subscriptions is included.</p>
+            <p class="body-text">Please keep the volume at a respectful level.</p>
+            <h2>Speaker</h2>
+
+            <p class="body-text">A
+                portable speaker with radio and phone input is
+                provided as a free amenity. You will need to bring your own dongle appropriate
+                for your phone to connect to the speaker.</p>
+
+            <p class="body-text">Feel
+                free to relocate the speaker as desired. Feel
+                free to ask the host for assistance. </p>
+
+            <p class="body-text">Please
+                keep the volume at a respectful level.</p>
+
+            <h2>Towels</h2>
+
+            <p class="body-text">Add the Towel Amenity and 5 clean, fluffy, beach towels will
+                be provided. Please leave used towels on the bar stools at the end of your
+                visit.</p>
+
+            <h2>Toys</h2>
+
+            <p class="body-text">Use of
+                the floats, beach balls, and other toys provided
+                is included. If you have toys of your own, please discuss with the host before
+                putting them in the pool.</p>
 
 
+            <h2>WiFi</h2>
 
+            <p class="body-text">Connect
+                to the &quot;Austin Inland Beach Guest&quot; wireless network. No password needed.</p>
 
+        </div>
 
 
         <div class="body-section-div">
             <p></p>
-            <p class="body-footnote-text">Revision 23 Aug 2023</p>
-            <p class="body-footnote-text">&copy; 2023</p>
+            <p class="body-footnote-text">Revision 9 Sep 2023</p>
+            <p class="body-footnote-text">&copy; 2023 Austin's Inland Beach</p>
             <p></p>
         </div>
 
